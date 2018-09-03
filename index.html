@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hmk04 IDM245</title>
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: {
+                families: ['Codystar']
+            }
+        };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/phaser.min.js"></script>
+    <script src="js/boot.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/play.js"></script>
+    <script src="js/winner.js"></script>
+    <script src="js/loser.js"></script>
+</head>
+
+<body>
+    <div id="phaser-canvas"></div>
+    <script type="text/javascript">
+        window.onload = function () {
+            console.log('windows loaded');
+
+            var game = new Phaser.Game(960, 720, Phaser.AUTO, 'phaser-canvas');
+
+            game.state.add('Boot', gameObj.Boot);
+            game.state.add('Preloader', gameObj.Preloader);
+            game.state.add('Main', gameObj.Main);
+            game.state.add('Play', gameObj.Play);
+            game.state.add('Winner', gameObj.Winner);
+            game.state.add('Loser', gameObj.Loser);
+
+            game.state.start('Boot');
+
+        }; // windows.onload
+    </script>
+</body>
+
+</html>
