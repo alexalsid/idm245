@@ -6,9 +6,14 @@ gameObj.Play = function (game) {
     var timerSeconds;
     var player;
     var cursors;
-    
+    var playerObj;
+
     var wall_r01;
     var wall_r01Obj;
+
+    var startTime = 0;
+    var endTime = 0;
+    var duration = 0;
 };
 
 
@@ -66,11 +71,13 @@ gameObj.Play.prototype = {
         // physics
 
         this.game.physics.startSystem(Phaser.Physics.P2JS);
+    
 
         //player
         player = this.game.add.sprite(450, 300, 'player');
-
         this.game.physics.p2.enable(player);
+        player.body.kinematic = true;
+        player.body.velocity.y = 300;
 
         cursors = this.game.input.keyboard.createCursorKeys();
 
@@ -165,14 +172,8 @@ gameObj.Play.prototype = {
 
     update: function () {
 
-    player.body.setZeroVelocity();
-
-    if (cursors.up.isDown) {
-        player.body.moveUp(300)
-    }
-    else if (cursors.down.isDown) {
-    player.body.moveDown(300);
-    }
+    //player.body.setZeroVelocity();
+ 
 
     if (cursors.left.isDown) {
         player.body.velocity.x = -300;
