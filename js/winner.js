@@ -11,7 +11,7 @@ gameObj.Winner.prototype = {
     create: function () {
         console.log('State - Winner');
 
-        var win = this.add.sprite(this.world.centerX - 300, this.world.centerY - 300, 'win');
+        var win = this.add.sprite(this.world.centerX - 300, 50, 'win');
         win.scale.setTo(1.5);
 
 

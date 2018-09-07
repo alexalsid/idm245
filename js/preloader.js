@@ -19,6 +19,8 @@ gameObj.Preloader.prototype = {
         this.game.load.image('win', 'img/win.png');
         this.game.load.image('start', 'img/start.png');
         this.game.load.image('lose', 'img/lose.png');
+        this.game.load.image('points', 'img/points.png');
+        this.game.load.image('obstacles', 'img/obstacles.png');
 
 
         // BUTTONS
