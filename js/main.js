@@ -17,8 +17,8 @@ gameObj.Main.prototype = {
 
         //Add text
         var txFirst = this.add.text(this.world.centerX - 200, 100, 'TUNNEL VISION');
-        var txSecond = this.add.text(this.world.centerX - 190, this.world.centerY - 130, 'Use the arrow keys to move through the');
-        var txThird = this.add.text(this.world.centerX - 140, this.world.centerY - 90, 'tunnel without hittin the walls');
+        var txSecond = this.add.text(this.world.centerX - 210, this.world.centerY - 130, 'Use left and right arrow keys to move through the tunnel');
+        var txThird = this.add.text(this.world.centerX - 283, this.world.centerY - 90, 'collect 1500 green points before the timer runs out and avoid red obstacles');
 
 
         txFirst.fill = 'white'
@@ -32,8 +32,8 @@ gameObj.Main.prototype = {
 
 
         txFirst.fontSize = 50;
-        txSecond.fontSize = 20;
-        txThird.fontSize = 20;
+        txSecond.fontSize = 16;
+        txThird.fontSize = 16;
 
         //Add button
         //The numbers given in parameters are the indexes of the frames, in this order: OVER, OUT, DOWN

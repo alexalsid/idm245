@@ -32,6 +32,11 @@ gameObj.Preloader.prototype = {
 
         this.load.spritesheet('pointsButton', "img/pointsbtn.png", 133.33, 54);
 
+        //sound effects
+        this.game.load.audio('loseSfx', 'audio/lose.mp3');
+        this.game.load.audio('pointsSfx', 'audio/points.mp3');
+        this.game.load.audio('wallSfx', 'audio/wall.mp3');
+
 
 
 

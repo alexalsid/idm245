@@ -14,6 +14,10 @@ gameObj.Play = function (game) {
     var startTime = 0;
     var endTime = 0;
     var duration = 0;
+
+    var loseSfx;
+    var pointsSfx;
+    var wallSfx;
 };
 
 
@@ -69,15 +73,6 @@ gameObj.Play.prototype = {
         this.game.physics.startSystem(Phaser.Physics.P2JS);
         this.game.physics.p2.setImpactEvents(true);
         this.game.physics.p2.restitution = 0.8;
-
-        
-
-      //left walls
-
-        
-      
-       
-
 
         //world
 
@@ -149,7 +144,7 @@ gameObj.Play.prototype = {
         points.enableBody = true;
         points.physicsBodyType = Phaser.Physics.P2JS;
 
-        for (var i = 0; i < 200; i++) {
+        for (var i = 0; i < 220; i++) {
             var xPos = this.game.rnd.integerInRange(300, 700);
             var point = points.create(xPos, this.game.world.randomY, 'points');
             //this.game.physics.p2.enable(point);
@@ -195,7 +190,7 @@ gameObj.Play.prototype = {
         player.body.setCollisionGroup(playerCollisionGroup);
         player.body.collides(pointsCollisionGroup, this.hitPoints, this);
         player.body.collides(obstaclesCollisionGroup, this.hitObstacles, this);
-        player.body.collides(wallsCollisionGroup);
+        player.body.collides(wallsCollisionGroup, this.hitWalls, this);
         
 
         cursors = this.game.input.keyboard.createCursorKeys();
@@ -229,6 +224,15 @@ gameObj.Play.prototype = {
         timerObj = this.game.time.create(false);
         timerObj.loop(1000, this.updateTimerFun, this);
         timerObj.start();
+
+        //sounds
+        loseSfx = this.game.add.audio('loseSfx');
+        loseSfx.allowMultiple = true;
+        pointsSfx = this.game.add.audio('pointsSfx');
+        pointsSfx.allowMultiple = true;
+        wallSfx = this.game.add.audio('wallSfx');
+        wallSfx.allowMultiple = true;
+
     }, // end create function
 
 
@@ -244,17 +248,24 @@ gameObj.Play.prototype = {
     hitPoints: function (body1, body2) {
 
         console.log('points button called');
+        pointsSfx.play();
         gameObj.gScore += 10;
         txScore.text = gameObj.gScore;
         player.body.velocity.y = 300;
         body2.sprite.alpha = 0.0;
 
+
     },
 
     hitObstacles: function () {
-
+        loseSfx.play();
         this.loserFun();
         
+    },
+
+    hitWalls: function () {
+        wallSfx.play();
+
     },
 
     updateTimerFun: function () {
@@ -284,7 +295,7 @@ gameObj.Play.prototype = {
             txTime.text = gameObj.gTime;
 
 
-        } else if (timerSeconds == 0 && gameObj.gScore >= 10) {
+        } else if (timerSeconds == 0 && gameObj.gScore >= 1500) {
 
 
             this.winnerFun();
@@ -319,8 +330,8 @@ gameObj.Play.prototype = {
 
     render: function () {
 
-    this.game.debug.cameraInfo(this.game.camera, 32, 32);
-    this.game.debug.spriteCoords(player, 32, 500);
+    //this.game.debug.cameraInfo(this.game.camera, 32, 32);
+    //this.game.debug.spriteCoords(player, 32, 500);
 
 }
 

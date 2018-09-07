@@ -31,8 +31,8 @@ gameObj.Loser.prototype = {
 
 
         var txFirst = this.add.text(this.world.centerX - 200, 100, 'TUNNEL VISION');
-        var txSecond = this.add.text(this.world.centerX - 140, 460, 'oh no... you died in the tunnel!');
-        var txThird = this.add.text(this.world.centerX - 140, 500, 'better luck next time');
+        var txSecond = this.add.text(this.world.centerX - 140, 170, 'oh no... you died in the tunnel!');
+        var txThird = this.add.text(this.world.centerX - 100, 200, 'better luck next time');
 
 
         txFirst.fill = 'white'
